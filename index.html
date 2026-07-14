@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>智能简历投递助手</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero">
+        <div class="hero__content">
+          <p class="eyebrow">AI Job Matching · Resume Outreach</p>
+          <h1>精准识别岗位 JD，自动生成高匹配打招呼话术</h1>
+          <p class="hero__desc">
+            输入你的目标岗位、简历亮点和公司 JD，系统会解析岗位要求、计算匹配度，筛选值得投递的公司，并生成可直接发送的打招呼文案。
+          </p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#matcher">开始匹配</a>
+            <a class="button button--ghost" href="#results">查看示例结果</a>
+          </div>
+        </div>
+        <div class="hero__card" aria-label="匹配能力概览">
+          <span class="score-ring">92%</span>
+          <h2>岗位相关度</h2>
+          <p>识别 JD 关键词、技能栈、行业方向与候选人目标岗位的重合度。</p>
+        </div>
+      </section>
+
+      <section class="workflow" aria-label="使用流程">
+        <article>
+          <span>01</span>
+          <h3>配置目标</h3>
+          <p>填写希望投递的岗位、城市、行业和核心技能。</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>解析 JD</h3>
+          <p>粘贴岗位描述，提取职责、硬技能、经验要求和加分项。</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>智能投递</h3>
+          <p>保留高相关公司，生成个性化打招呼文案和投递建议。</p>
+        </article>
+      </section>
+
+      <section id="matcher" class="panel matcher">
+        <div class="section-heading">
+          <p class="eyebrow">Matcher</p>
+          <h2>输入岗位信息</h2>
+          <p>示例已内置在表单中，你可以直接点击“分析匹配度”。</p>
+        </div>
+
+        <form id="jobForm" class="form-grid">
+          <label>
+            我希望的岗位
+            <input id="targetRole" name="targetRole" value="AI 产品经理" placeholder="例如：前端工程师 / AI 产品经理" required />
+          </label>
+          <label>
+            目标城市
+            <input id="targetCity" name="targetCity" value="上海、杭州、远程" placeholder="例如：北京、上海、远程" />
+          </label>
+          <label>
+            关注行业
+            <input id="targetIndustry" name="targetIndustry" value="AI 应用、教育科技、效率工具" placeholder="例如：互联网、金融科技、跨境电商" />
+          </label>
+          <label>
+            我的核心技能 / 简历亮点
+            <textarea id="resumeHighlights" name="resumeHighlights" rows="5" required>熟悉 AI 产品规划、用户调研、数据分析、Prompt 设计、B 端 SaaS、增长实验；曾负责从 0 到 1 上线智能学习助手，提升用户留存 18%。</textarea>
+          </label>
+          <label class="wide">
+            公司岗位 JD
+            <textarea id="jobDescription" name="jobDescription" rows="8" required>某教育科技公司招聘 AI 产品经理，负责智能学习产品的需求分析、竞品研究、AI 功能规划、跨团队项目推进和数据指标优化。要求 3 年以上互联网产品经验，熟悉大模型应用、Prompt Engineering、用户增长、数据分析，有教育行业或 SaaS 产品经验优先，工作地点上海，可接受部分远程。</textarea>
+          </label>
+          <button class="button button--primary wide" type="submit">分析匹配度并生成话术</button>
+        </form>
+      </section>
+
+      <section id="results" class="results-grid">
+        <article class="panel result-card">
+          <div class="section-heading">
+            <p class="eyebrow">Fit Score</p>
+            <h2>岗位匹配结果</h2>
+          </div>
+          <div id="score" class="big-score">--</div>
+          <p id="decision" class="decision">填写信息后将显示是否建议投递。</p>
+          <div id="tags" class="tags" aria-label="命中的 JD 关键词"></div>
+        </article>
+
+        <article class="panel result-card">
+          <div class="section-heading">
+            <p class="eyebrow">JD Insight</p>
+            <h2>识别到的岗位重点</h2>
+          </div>
+          <ul id="insights" class="insight-list">
+            <li>等待分析 JD 中的职责、技能和加分项。</li>
+          </ul>
+        </article>
+
+        <article class="panel result-card wide-card">
+          <div class="section-heading">
+            <p class="eyebrow">Greeting</p>
+            <h2>个性化打招呼文案</h2>
+          </div>
+          <textarea id="greeting" rows="8" readonly placeholder="分析后会生成可复制的投递打招呼内容"></textarea>
+          <button id="copyGreeting" class="button button--ghost" type="button">复制文案</button>
+        </article>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
